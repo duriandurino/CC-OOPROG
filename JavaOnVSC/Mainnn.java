@@ -13,8 +13,8 @@ public class Mainnn {
         System.out.println("cc gender "+ cc.getGender());
 
         //testing getter setter of encapsulated var on children
-        c.setGender("Male");
-        cc.setGender("Female");
+        c.setGender("Lalaki");
+        cc.setGender("Babae");
 
         System.out.println("c gender "+ c.getGender());
         System.out.println("cc gender "+ cc.getGender());
