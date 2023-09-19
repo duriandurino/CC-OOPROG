@@ -1,7 +1,7 @@
 class Child0 extends Parent{
 
     //private var of this child
-    private String gender = "F";
+    private String gender = "Female";
 
     //to set and get encapsulated var of this child
     String getGender(){
