@@ -9,7 +9,7 @@ public class Plexer3_Alejandrino_Adrian_2F{
         
         while(true){
     
-          System.out.println("Input array size: ");
+          System.out.println("Enter array size: ");
           
           if(sc.hasNextInt()){
             size = sc.nextInt();
@@ -22,7 +22,6 @@ public class Plexer3_Alejandrino_Adrian_2F{
         }
         
         int[] arr = new int[size];
-        int[] dup = new int[size];
         
          for(int i=0; i<size;i++){
               System.out.println("Input to array: ");
@@ -38,26 +37,11 @@ public class Plexer3_Alejandrino_Adrian_2F{
         }
         
         System.out.println("Array before sorting:");
+        System.out.print("| ");
         for(int i = 0; i<size; i++){
-            System.out.print(arr[i]+" ");
+            System.out.print(arr[i]+" | ");
         }
         System.out.println();
-        
-        int count = 0;
-        
-        for(int i = 0; i<size;i++){
-            
-            for(int j = i+1; j<size;j++){
-                //System.out.println(arr[i]+"-"+arr[j]);
-                if(arr[i] == arr[j] && i!=j && dup[count+1]!=arr[i]){
-                    
-                    dup[count] = arr[i];
-                    count+=1;
-                    //System.out.println(dup[i]);
-                }
-            }
-            
-        }
         
         for(int i = 0; i<size; i++){
             for(int j = 1; j <size-i;j++){
@@ -70,14 +54,31 @@ public class Plexer3_Alejandrino_Adrian_2F{
             }
         }
         
+        
+        
         System.out.println("Array after sorting:");
+        System.out.print("| ");
         for(int i = 0; i<size; i++){
-            System.out.print(arr[i]+" ");
+            System.out.print(arr[i]+" | ");
         }
         
         System.out.println("\nDuplicated values:");
-        for(int i = 0; i<count; i++){
-            System.out.print(dup[i]+" ");
+        System.out.print("| ");
+        int dup = 0;
+        
+        for(int i = 0; i<size;i++){
+            
+            for(int j = 0; j<size;j++){
+                //System.out.println(arr[i]+"-"+arr[j]);
+                if(arr[i] == arr[j] && j!=i && dup!=arr[i]){
+                    
+                    dup = arr[i];
+                    System.out.print(dup+" | ");
+                    break;
+                    //System.out.println(dup[i]);
+                }
+            }
+
         }
     
     }
