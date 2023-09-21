@@ -66,7 +66,7 @@ public class Plexer3_Alejandrino_Adrian_2F{
         System.out.print("| ");
         int dup = 0;
         
-        for(int i = 0; i<size;i++){
+        for(int i = 0; i<size;i++){//used the Kenteynesian method
             
             for(int j = 0; j<size;j++){
                 //System.out.println(arr[i]+"-"+arr[j]);
