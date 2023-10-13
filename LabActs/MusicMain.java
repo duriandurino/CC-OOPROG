@@ -9,6 +9,8 @@ public class MusicMain{
         ArrayList<String> albums = new ArrayList<>();
         ArrayList<String> categs = new ArrayList<>();
         
+        int mLoop=1;
+        do{
         int act = Menu();
         switch (act){
             case 1:
@@ -19,6 +21,7 @@ public class MusicMain{
                     String stop;
                     while(true){
                         System.out.print("Do you want to add another song?[Yes/No]: ");
+                        sc.nextLine();
                         stop = sc.nextLine();
                         if(stop.equals("Yes")||stop.equals("yes")||stop.equals("No")||stop.equals("no")){
                             break;
@@ -39,9 +42,13 @@ public class MusicMain{
                 break;
             case 3:
                 break;
-            default:
+            case 4:
+                mLoop = 0;
+                break;
+            default: 
                 break;
         }
+        }while(mLoop!=0);
     }
 
     static void EMssg(){
@@ -49,7 +56,7 @@ public class MusicMain{
     }
 
     static int Menu(){
-        String[] actions = {"Add a Song", "Pick Songs by Artist", "Pick Songs by Category"};
+        String[] actions = {"Add a Song", "Pick Songs by Artist", "Pick Songs by Category", "Exit Program"};
         int act = 0;
         do{
             System.out.println("Choose and action:");
@@ -59,7 +66,7 @@ public class MusicMain{
             System.out.println();
             System.out.print("Enter num of chosen action: ");
             act = sc.nextInt();
-            if(act>0&&act<4){
+            if(act>0&&act<5){
                 break;
             }
             EMssg();
@@ -116,7 +123,7 @@ public class MusicMain{
             Song song = new Song(name, yrToString, artist, categ);
             /**/
         //}while(true);
-            System.out.println(song.AllToString());
+            song.DisplayAdded();
         return song.AllToString();
     }
 }

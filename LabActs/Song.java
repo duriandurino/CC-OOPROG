@@ -15,4 +15,9 @@ class Song{
         String concatData = "Song name: "+this.sName+".mp3_Song artist: "+this.sArtist+"_Year released: "+this.sYear+"_Song category: "+this.sCateg;
         return concatData;
     }
+
+    void DisplayAdded(){
+        System.out.println("New song added:");
+        System.out.println("Song name: "+this.sName+".mp3\nSong artist: "+this.sArtist+"\nYear released: "+this.sYear+"\nSong category: "+this.sCateg);
+    }
 }
