@@ -4,7 +4,7 @@ public class MusicMain{
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args){
-        ArrayList<Object> songLib = new ArrayList<>();
+        ArrayList<String> songLib = new ArrayList<>();
 
         ArrayList<String> albums = new ArrayList<>();
         ArrayList<String> categs = new ArrayList<>();
@@ -12,7 +12,28 @@ public class MusicMain{
         int act = Menu();
         switch (act){
             case 1:
-                AddSong();
+                int z=0;
+                do{
+                    songLib.add(AddSong(z));
+
+                    String stop;
+                    while(true){
+                        System.out.print("Do you want to add another song?[Yes/No]: ");
+                        stop = sc.nextLine();
+                        if(stop.equals("Yes")||stop.equals("yes")||stop.equals("No")||stop.equals("no")){
+                            break;
+                        }
+                    }
+                    if(stop.equals("No")||stop.equals("no")){
+                        break;
+                    }
+                    z++;
+                }while(true);
+                int i=0;
+                while(i<songLib.size()){
+                    System.out.println(songLib.get(i));
+                    i++;
+                }
                 break;
             case 2:
                 break;
@@ -46,19 +67,22 @@ public class MusicMain{
         return act;
     }
 
-    static void AddSong(){
+    static String AddSong(int z){
         int year;
         String name;
         String artist;
         String[] categLib = {
             "Hip-Hop", "Rock", "Pop", "Reggae", "Popular Music",
-            "Funk", "Folk Music", "Country", "Rhythm and Blues"
+            "Funk", "Folk Music", "Country", "Rhythm and Blues", "Blues"
         };
         String categ;
         String yrToString;
 
-        do{
-            System.out.println("Add a Song:\n");
+        //do{
+            System.out.print("\nAdd a Song:\n");
+            if(z==0){
+                sc.nextLine();
+            }
             System.out.print("Song name: ");
             name = sc.nextLine();
             System.out.print("Song artist: ");
@@ -82,15 +106,17 @@ public class MusicMain{
                 System.out.print("Enter num of song category: ");
                 if(sc.hasNextInt()){
                     int num = sc.nextInt();
-                    if(num>9){
+                    if(num<11){
                         categ = categLib[num-1];
                         break;
                     }
                 }
                 EMssg();
             }
-            
-            break;
-        }while(true);
+            Song song = new Song(name, yrToString, artist, categ);
+            /**/
+        //}while(true);
+            System.out.println(song.AllToString());
+        return song.AllToString();
     }
 }
