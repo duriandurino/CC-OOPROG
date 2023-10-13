@@ -2,7 +2,7 @@ import java.util.*;
 
 public class MusicMain{
     static Scanner sc = new Scanner(System.in);
-    FindSong findBy = new FindSong();
+    static FindSong findBy = new FindSong();
     ArrayList<String> currentSongs = new ArrayList<>();
 
     public static void main(String[] args){
@@ -35,6 +35,13 @@ public class MusicMain{
                 while(i<songLib.size()){
                     System.out.println(songLib.get(i));
                     String getData = songLib.get(i);
+                    String[] splitData = getData.split("_",5);
+                    for(int j=0;j<findBy.GetArtistsCount();j++){
+                        if(!splitData[1].equals(findBy.GetFromArtists(j))&&j==findBy.GetArtistsCount()-1){
+                            findBy.AddArtist(splitData[1]);
+                        }
+                    }
+                    findBy.DisplayArtists();
                     i++;
                 }
 
