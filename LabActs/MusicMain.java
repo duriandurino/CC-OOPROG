@@ -144,13 +144,16 @@ public class MusicMain{
             String[] splitData = getData.split("_",5);
             String[] getArtist = splitData[1].split(":", 2);
             System.out.println(getArtist[1]);
+            if(findBy.GetArtistsCount()==0){
+                findBy.AddArtist(getArtist[1]);
+            }
             for(int j=0;j<findBy.GetArtistsCount();j++){
-                if(!getArtist[1].equals(findBy.GetFromArtists(j))&&j==findBy.GetArtistsCount()){
+                if((!getArtist[1].equals(findBy.GetFromArtists(j))) && j==(findBy.GetArtistsCount()-1)){
                     findBy.AddArtist(getArtist[1]);
                 }
             }
-            findBy.DisplayArtists();
             i++;
         }
+        findBy.DisplayArtists();
     }
 }

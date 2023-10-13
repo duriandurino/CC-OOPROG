@@ -22,11 +22,13 @@ class FindSong {
         return getArtist;
     }
     int GetArtistsCount(){
+        //System.out.println(artists.size());
         return artists.size();
     }
     void DisplayArtists(){
+        System.out.println("Artists in Library:");
         for(int i=0;i<GetArtistsCount();i++){
-            System.out.println(artists.get(i));
+            System.out.println((i+1)+"-"+artists.get(i));
         }
     }
 }
