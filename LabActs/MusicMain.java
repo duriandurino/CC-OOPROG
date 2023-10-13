@@ -78,6 +78,7 @@ public class MusicMain{
         int year;
         String name;
         String artist;
+        String album;
         String[] categLib = {
             "Hip-Hop", "Rock", "Pop", "Reggae", "Popular Music",
             "Funk", "Folk Music", "Country", "Rhythm and Blues", "Blues"
@@ -94,6 +95,8 @@ public class MusicMain{
             name = sc.nextLine();
             System.out.print("Song artist: ");
             artist = sc.nextLine();
+            System.out.print("Song album[If no album input \"No Album\"]: ");
+            album = sc.nextLine();
             while(true){
                 System.out.print("Year released: ");
                 if(sc.hasNextInt()){
@@ -120,7 +123,7 @@ public class MusicMain{
                 }
                 EMssg();
             }
-            Song song = new Song(name, yrToString, artist, categ);
+            Song song = new Song(name, yrToString, artist, album, categ);
             /**/
         //}while(true);
             song.DisplayAdded();
