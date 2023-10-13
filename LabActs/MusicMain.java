@@ -3,6 +3,7 @@ import java.util.*;
 public class MusicMain{
     static Scanner sc = new Scanner(System.in);
     FindSong findBy = new FindSong();
+    ArrayList<String> currentSongs = new ArrayList<>();
 
     public static void main(String[] args){
         ArrayList<String> songLib = new ArrayList<>();
@@ -33,14 +34,19 @@ public class MusicMain{
                 int i=0;
                 while(i<songLib.size()){
                     System.out.println(songLib.get(i));
+                    String getData = songLib.get(i);
                     i++;
                 }
+
                 break;
             case 2:
+                
                 break;
             case 3:
                 break;
             case 4:
+                break;
+            case 5:
                 mLoop = 0;
                 break;
             default: 
@@ -54,7 +60,7 @@ public class MusicMain{
     }
 
     static int Menu(){
-        String[] actions = {"Add a Song", "Pick Songs by Artist", "Pick Songs by Category", "Exit Program"};
+        String[] actions = {"Add a Song", "Play Songs by Artist", "Play Songs by Category", "Play Songs by Album", "Exit Program"};
         int act = 0;
         do{
             System.out.println("Choose and action:");
