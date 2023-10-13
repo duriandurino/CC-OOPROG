@@ -14,7 +14,7 @@ class Song{
     }
 
     String AllToString(){
-        String concatData = "Song name: "+this.sName+".mp3_Song artist: "+this.sArtist+"_From album: "+this.sAlbum+"_Year released: "+this.sYear+"_Song category: "+this.sCateg;
+        String concatData = "Song name:"+this.sName+".mp3_Song artist:"+this.sArtist+"_From album:"+this.sAlbum+"_Year released:"+this.sYear+"_Song category:"+this.sCateg;
         return concatData;
     }
 

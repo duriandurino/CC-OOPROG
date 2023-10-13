@@ -31,20 +31,7 @@ public class MusicMain{
                     }
                     z++;
                 }while(true);
-                int i=0;
-                while(i<songLib.size()){
-                    System.out.println(songLib.get(i));
-                    String getData = songLib.get(i);
-                    String[] splitData = getData.split("_",5);
-                    for(int j=0;j<findBy.GetArtistsCount();j++){
-                        if(!splitData[1].equals(findBy.GetFromArtists(j))&&j==findBy.GetArtistsCount()-1){
-                            findBy.AddArtist(splitData[1]);
-                        }
-                    }
-                    findBy.DisplayArtists();
-                    i++;
-                }
-
+                StoreGroups(songLib);
                 break;
             case 2:
                 
@@ -76,11 +63,17 @@ public class MusicMain{
             }
             System.out.println();
             System.out.print("Enter num of chosen action: ");
-            act = sc.nextInt();
-            if(act>0&&act<5){
-                break;
+            while(true){
+                if(sc.hasNextInt()){
+                    act = sc.nextInt();
+                    if(act>0&&act<5){
+                        break;
+                    }
+                }
+                sc.nextLine();
+                EMssg();
             }
-            EMssg();
+            break;
         }while(true);
         return act;
     }
@@ -117,6 +110,7 @@ public class MusicMain{
                         break;
                     }
                 }
+                sc.nextLine();
                 EMssg();
             }
             System.out.println("Song Categories:");
@@ -132,6 +126,7 @@ public class MusicMain{
                         break;
                     }
                 }
+                sc.nextLine();
                 EMssg();
             }
             Song song = new Song(name, yrToString, artist, album, categ);
@@ -139,5 +134,23 @@ public class MusicMain{
         //}while(true);
             song.DisplayAdded();
         return song.AllToString();
+    }
+
+    static void StoreGroups(ArrayList<String> songLib){
+        int i=0;
+        while(i<songLib.size()){
+            System.out.println(songLib.get(i));
+            String getData = songLib.get(i);
+            String[] splitData = getData.split("_",5);
+            String[] getArtist = splitData[1].split(":", 2);
+            System.out.println(getArtist[1]);
+            for(int j=0;j<findBy.GetArtistsCount();j++){
+                if(!getArtist[1].equals(findBy.GetFromArtists(j))&&j==findBy.GetArtistsCount()){
+                    findBy.AddArtist(getArtist[1]);
+                }
+            }
+            findBy.DisplayArtists();
+            i++;
+        }
     }
 }

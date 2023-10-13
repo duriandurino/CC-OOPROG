@@ -9,7 +9,7 @@ class FindSong {
 
     }
     String GetFromAlbum(){
-        String extractAlbum;
+        String extractAlbum = "";
 
         return extractAlbum;
     }
