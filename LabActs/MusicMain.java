@@ -2,12 +2,10 @@ import java.util.*;
 
 public class MusicMain{
     static Scanner sc = new Scanner(System.in);
+    FindSong findBy = new FindSong();
 
     public static void main(String[] args){
         ArrayList<String> songLib = new ArrayList<>();
-
-        ArrayList<String> albums = new ArrayList<>();
-        ArrayList<String> categs = new ArrayList<>();
         
         int mLoop=1;
         do{
