@@ -18,7 +18,7 @@ class FindSong {
     void DisplayAlbums(){
         System.out.println("Albums in Library:");
         for(int i=0;i<GetAlbumsCount();i++){
-            System.out.println((i+1)+"-"+albums.get(i));
+            System.out.println((i+1)+" - "+albums.get(i));
         }
     }
 
@@ -35,7 +35,7 @@ class FindSong {
     void DisplayArtists(){
         System.out.println("Artists in Library:");
         for(int i=0;i<GetArtistsCount();i++){
-            System.out.println((i+1)+"-"+artists.get(i));
+            System.out.println((i+1)+" - "+artists.get(i));
         }
     }
 
@@ -52,7 +52,7 @@ class FindSong {
     void DisplayCategs(){
         System.out.println("Category Group in Library:");
         for(int i=0;i<GetCategsCount();i++){
-            System.out.println((i+1)+"-"+categs.get(i));
+            System.out.println((i+1)+" - "+categs.get(i));
         }
     }
 }

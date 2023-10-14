@@ -19,7 +19,7 @@ class Song{
     }
 
     void DisplayAdded(){
-        System.out.println("New song added:");
+        System.out.println("\nNew song added:");
         System.out.println("Song name: "+this.sName+".mp3\nSong artist: "+this.sArtist+"\nFrom album: "+this.sAlbum+"\nYear released: "+this.sYear+"\nSong category: "+this.sCateg);
     }
 }

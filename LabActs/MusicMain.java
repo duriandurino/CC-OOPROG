@@ -11,7 +11,8 @@ public class MusicMain extends MainBack{
 
                         String stop;
                         while(true){
-                            System.out.print("Do you want to add another song?[Yes/No]: ");
+                            System.out.print("\nDo you want to add another song?[Yes/No]: ");
+                            sc.nextLine();
                             stop = sc.nextLine();
                             if(stop.equals("Yes")||stop.equals("yes")||stop.equals("No")||stop.equals("no")){
                                 break;
@@ -25,13 +26,19 @@ public class MusicMain extends MainBack{
                     StoreGroups(songLib);
                     break;
                 case 2:
-                    
+                    if(songLib.size()==0){
+                        break;
+                    }
+                    PlaySong();
                     break;
                 case 3:
+                    
                     break;
                 case 4:
                     break;
                 case 5:
+                    break;
+                case 6:
                     mLoop = 0;
                     break;
                 default: 
