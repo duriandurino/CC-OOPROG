@@ -81,7 +81,7 @@ public class MusicMain extends MainBack{
                             break;
                         }
                     }while(true);
-                    currentSongs.clear();
+                    
                     break;
                 //end of PlayByArtist
                 case 4:
@@ -104,7 +104,7 @@ public class MusicMain extends MainBack{
                             break;
                         }
                     }while(true);
-                    currentSongs.clear();
+                    
                     break;
                 case 5:
                     if(findBy.GetAlbumsCount()==0){
@@ -126,7 +126,7 @@ public class MusicMain extends MainBack{
                             break;
                         }
                     }while(true);
-                    currentSongs.clear();
+                    
                     break;
                 //end of PlayByAlbum
                 case 6:

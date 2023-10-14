@@ -22,11 +22,12 @@ public class MainBack {
                 System.out.println("["+(i+1)+"] "+actions[i]);
             }
             System.out.println();
-            System.out.print("Enter num of chosen action: ");
+            
             while(true){
+                System.out.print("Enter num of chosen action: ");
                 if(sc.hasNextInt()){
                     act = sc.nextInt();
-                    if(act>0&&act<actions.length){
+                    if(act>0&&act<=actions.length){
                         break;
                     }
                 }
@@ -207,8 +208,9 @@ public class MainBack {
         int pick=0;
 
         findBy.DisplayArtists();
-        System.out.print("\nInput num of chosen artist: ");
+        
         while(true){
+            System.out.print("\nInput num of chosen artist: ");
             if(sc.hasNextInt()){
                 pick = sc.nextInt();
                 if(pick>0&&pick<=findBy.GetArtistsCount()){
@@ -231,9 +233,9 @@ public class MainBack {
             }
         }
 
-        System.out.print("Input song number of chosen song: ");
         int num = 0;
         while(true){
+            System.out.print("Input song number of chosen song: ");
             if(sc.hasNextInt()){
                 num = sc.nextInt();
                 if(num>0&&num<=currentSongs.size()){
@@ -244,14 +246,16 @@ public class MainBack {
             EMssg();
         }
         PlayCurrent(num);
+        currentSongs.clear();
     }
 
     static void PlayByCategory(){//group songs by category
         int pick=0;
 
         findBy.DisplayCategs();
-        System.out.print("\nInput num of chosen category: ");
+        
         while(true){
+            System.out.print("\nInput num of chosen category: ");
             if(sc.hasNextInt()){
                 pick = sc.nextInt();
                 if(pick>0&&pick<=findBy.GetCategsCount()){
@@ -274,9 +278,9 @@ public class MainBack {
             }
         }
 
-        System.out.print("Input song number of chosen song: ");
         int num = 0;
         while(true){
+            System.out.print("Input song number of chosen song: ");
             if(sc.hasNextInt()){
                 num = sc.nextInt();
                 if(num>0&&num<=currentSongs.size()){
@@ -287,14 +291,16 @@ public class MainBack {
             EMssg();
         }
         PlayCurrent(num);
+        currentSongs.clear();
     }
 
     static void PlayByAlbum(){//group songs by album
         int pick=0;
 
         findBy.DisplayAlbums();
-        System.out.print("\nInput num of chosen album: ");
+        
         while(true){
+            System.out.print("\nInput num of chosen album: ");
             if(sc.hasNextInt()){
                 pick = sc.nextInt();
                 if(pick>0&&pick<=findBy.GetAlbumsCount()){
@@ -317,9 +323,9 @@ public class MainBack {
             }
         }
 
-        System.out.print("Input song number of chosen song: ");
         int num = 0;
         while(true){
+            System.out.print("Input song number of chosen song: ");
             if(sc.hasNextInt()){
                 num = sc.nextInt();
                 if(num>0&&num<=currentSongs.size()){
@@ -330,5 +336,6 @@ public class MainBack {
             EMssg();
         }
         PlayCurrent(num);
+        currentSongs.clear();
     }
 }
