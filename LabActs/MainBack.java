@@ -4,6 +4,7 @@ public class MainBack {
     static Scanner sc = new Scanner(System.in);
     static FindSong findBy = new FindSong();
     ArrayList<String> currentSongs = new ArrayList<>();
+    static ArrayList<String> songLib = new ArrayList<>();
 
     static void EMssg(){
         System.out.println("Error, please input again...");
