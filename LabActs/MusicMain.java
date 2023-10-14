@@ -35,8 +35,8 @@ public class MusicMain extends MainBack{
                             System.out.print("\nInput song number of chosen song: ");
                             if(sc.hasNextInt()){
                                 int num = sc.nextInt();
-                                if(num<songLib.size()){
-                                    PlaySong(num);
+                                if(num>0&&num<songLib.size()){
+                                    PlaySong(num-1);
                                     break;
                                 }
                             }

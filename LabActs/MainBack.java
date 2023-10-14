@@ -160,7 +160,7 @@ public class MainBack {
         System.out.println("\n|v|-Songs stored in library-|v|\n");
         for(int i=0;i<songLib.size();i++){
             String[] extractSong = songLib.get(i).split("_",5);
-            System.out.println("Song number = ["+(i+1)+"]");
+            System.out.println("|Song number = ["+(i+1)+"]|");
             System.out.println(extractSong[0]);
             System.out.println(extractSong[1]);
             System.out.println(extractSong[2]);
@@ -172,7 +172,7 @@ public class MainBack {
 
     static void PlaySong(int i){
         String[] extractSong = songLib.get(i).split("_",5);
-        System.out.println("\nNow Playing Song = ["+(i+1)+"]");
+        System.out.println("\n|Now Playing Song = ["+(i+1)+"]|");
         System.out.println(extractSong[0]);
         System.out.println(extractSong[1]);
         System.out.println(extractSong[2]);
