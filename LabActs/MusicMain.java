@@ -29,7 +29,34 @@ public class MusicMain extends MainBack{
                     if(songLib.size()==0){
                         break;
                     }
-                    PlaySong();
+                    DisplaySongLib();
+                    do{
+                        while(true){
+                            System.out.print("\nInput song number of chosen song: ");
+                            if(sc.hasNextInt()){
+                                int num = sc.nextInt();
+                                if(num<songLib.size()){
+                                    PlaySong(num);
+                                    break;
+                                }
+                            }
+                            sc.nextLine();
+                            EMssg();
+                        }
+
+                        String stop;
+                        while(true){
+                            System.out.print("\nDo you want to play another song?[Yes/No]: ");
+                            sc.nextLine();
+                            stop = sc.nextLine();
+                            if(stop.equals("Yes")||stop.equals("yes")||stop.equals("No")||stop.equals("no")){
+                                break;
+                            }
+                        }
+                        if(stop.equals("No")||stop.equals("no")){
+                            break;
+                        }
+                    }while(true);
                     break;
                 case 3:
                     
