@@ -18,7 +18,6 @@ public class MusicMain extends MainBack{
                     String stop;
                     while(true){
                         System.out.print("Do you want to add another song?[Yes/No]: ");
-                        sc.nextLine();
                         stop = sc.nextLine();
                         if(stop.equals("Yes")||stop.equals("yes")||stop.equals("No")||stop.equals("no")){
                             break;

@@ -46,75 +46,109 @@ public class MainBack {
         String categ;
         String yrToString;
 
-        //do{
-            System.out.print("\nAdd a Song:\n");
-            if(z==0){
-                sc.nextLine();
-            }
-            System.out.print("Song name: ");
-            name = sc.nextLine();
-            System.out.print("Song artist: ");
-            artist = sc.nextLine();
-            System.out.print("Song album[If no album input \"No Album\"]: ");
-            album = sc.nextLine();
-            while(true){
-                System.out.print("Year released: ");
-                if(sc.hasNextInt()){
-                    year = sc.nextInt();
-                    if(year<2024){
-                        yrToString = String.valueOf(year);
-                        break;
-                    }
+        System.out.print("\n|v|-Add a Song-|v|\n");
+        //if(z==0){
+            sc.nextLine();
+        //}
+        System.out.print("Song name[!Case sensitive!]: ");
+        name = sc.nextLine();
+        System.out.print("Song artist[!Case sensitive!]: ");
+        artist = sc.nextLine();
+        System.out.print("Song album[If no album, input \"no album\"]: ");
+        album = sc.nextLine();
+        while(true){
+            System.out.print("Year released: ");
+            if(sc.hasNextInt()){
+                year = sc.nextInt();
+                if(year<2024){
+                    yrToString = String.valueOf(year);
+                    break;
                 }
-                sc.nextLine();
-                EMssg();
             }
-            System.out.println("Song Categories:");
-            for(int i=0;i<categLib.length;i++){
-                System.out.println("["+(i+1)+"] "+categLib[i]);
-            }
-            while(true){
-                System.out.print("Enter num of song category: ");
-                if(sc.hasNextInt()){
-                    int num = sc.nextInt();
-                    if(num<11){
-                        categ = categLib[num-1];
-                        break;
-                    }
+            sc.nextLine();
+            EMssg();
+        }
+        System.out.println("Song Categories:");
+        for(int i=0;i<categLib.length;i++){
+            System.out.println("["+(i+1)+"] "+categLib[i]);
+        }
+        while(true){
+            System.out.print("Enter num of song category: ");
+            if(sc.hasNextInt()){
+                int num = sc.nextInt();
+                if(num<11){
+                    categ = categLib[num-1];
+                    break;
                 }
-                sc.nextLine();
-                EMssg();
             }
-            Song song = new Song(name, yrToString, artist, album, categ);
-            /**/
-        //}while(true);
-            song.DisplayAdded();
+            sc.nextLine();
+            EMssg();
+        }
+
+        Song song = new Song(name, yrToString, artist, album, categ);
+        song.DisplayAdded();
         return song.AllToString();
     }
 
     static void StoreGroups(ArrayList<String> songLib){
         int i=0;
+        boolean x = false;
+        boolean y = false;
+        boolean z = false;
         while(i<songLib.size()){
-            boolean dupe = false;
-            System.out.println(songLib.get(i));
+            x = false;
+            y = false;
+            z = false;
+            //System.out.println(songLib.get(i));
             String getData = songLib.get(i);
             String[] splitData = getData.split("_",5);
+            String[] getCateg = splitData[4].split(":", 2);
+            String[] getAlbum = splitData[2].split(":", 2);
             String[] getArtist = splitData[1].split(":", 2);
-            System.out.println(getArtist[1]);
+
+            //Artist add
             if(findBy.GetArtistsCount()==0){
                 findBy.AddArtist(getArtist[1]);
-            }else{
-                for(int j=0;j<findBy.GetArtistsCount();j++){
-                    if(getArtist[1].equals(findBy.GetFromArtists(j))){
-                        dupe = true;
-                    }
+            }
+            for(int j=0;j<findBy.GetArtistsCount();j++){
+                if(getArtist[1].equals(findBy.GetFromArtists(j))){
+                    x = true;
                 }
             }
-            if(dupe == false){
+            if(x == false){
                 findBy.AddArtist(getArtist[1]);
             }
+
+            //Category add
+            if(findBy.GetCategsCount()==0){
+                findBy.AddCateg(getCateg[1]);
+            }
+            for(int j=0;j<findBy.GetCategsCount();j++){
+                if(getCateg[1].equals(findBy.GetFromCategs(j))){
+                    y = true;
+                }
+            }
+            if(y == false){
+                findBy.AddCateg(getCateg[1]);
+            }
+
+            //Album add
+            if(findBy.GetAlbumsCount()==0){
+                findBy.AddAlbum(getAlbum[1]);
+            }
+            for(int j=0;j<findBy.GetAlbumsCount();j++){
+                if(getAlbum[1].equals(findBy.GetFromAlbums(j))){
+                    z = true;
+                }
+            }
+            if(z == false){
+                findBy.AddAlbum(getAlbum[1]);
+            }
+            
             i++;
         }
         findBy.DisplayArtists();
+        findBy.DisplayAlbums();
+        findBy.DisplayCategs();
     }
 }
