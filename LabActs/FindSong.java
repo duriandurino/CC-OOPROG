@@ -16,7 +16,7 @@ class FindSong {
         return albums.size();
     }
     void DisplayAlbums(){
-        System.out.println("Albums in Library:");
+        System.out.println("\nAlbums in Library:");
         for(int i=0;i<GetAlbumsCount();i++){
             System.out.println((i+1)+" - "+albums.get(i));
         }
@@ -33,7 +33,7 @@ class FindSong {
         return artists.size();
     }
     void DisplayArtists(){
-        System.out.println("Artists in Library:");
+        System.out.println("\nArtists in Library:");
         for(int i=0;i<GetArtistsCount();i++){
             System.out.println((i+1)+" - "+artists.get(i));
         }
@@ -50,7 +50,7 @@ class FindSong {
         return categs.size();
     }
     void DisplayCategs(){
-        System.out.println("Category Group in Library:");
+        System.out.println("\nCategories in Library:");
         for(int i=0;i<GetCategsCount();i++){
             System.out.println((i+1)+" - "+categs.get(i));
         }

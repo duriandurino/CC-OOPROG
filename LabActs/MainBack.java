@@ -17,7 +17,7 @@ public class MainBack {
         };
         int act = 0;
         do{
-            System.out.println("Choose and action:");
+            System.out.println("\nChoose an action:");
             for(int i=0;i<actions.length;i++){
                 System.out.println("["+(i+1)+"] "+actions[i]);
             }
@@ -151,9 +151,9 @@ public class MainBack {
             
             i++;
         }
-        findBy.DisplayArtists();
-        findBy.DisplayAlbums();
-        findBy.DisplayCategs();
+        //findBy.DisplayArtists();
+        //findBy.DisplayAlbums();
+        //findBy.DisplayCategs();
     }
 
     static void DisplaySongLib(){
@@ -181,11 +181,33 @@ public class MainBack {
         System.out.println();
     }
 
-    static void PlayByArtist(){
+    static void PlayCurrent(int i){
+        String[] extractSong = currentSongs.get(i-1).split("_",5);
+        System.out.println("\n|Now Playing Song = ["+(i)+"]|");
+        System.out.println(extractSong[0]);
+        System.out.println(extractSong[1]);
+        System.out.println(extractSong[2]);
+        System.out.println(extractSong[3]);
+        System.out.println(extractSong[4]);
+        System.out.println();
+    }
+
+    static void ToCurrent(String[] extractSong, int count, int i){
+        currentSongs.add(songLib.get(i));
+        System.out.println("|Song number = ["+(count)+"]|");
+        System.out.println(extractSong[0]);
+        System.out.println(extractSong[1]);
+        System.out.println(extractSong[2]);
+        System.out.println(extractSong[3]);
+        System.out.println(extractSong[4]);
+        System.out.println();
+    }
+
+    static void PlayByArtist(){//group songs by artist
         int pick=0;
 
         findBy.DisplayArtists();
-        System.out.print("Input num of chosen artist: ");
+        System.out.print("\nInput num of chosen artist: ");
         while(true){
             if(sc.hasNextInt()){
                 pick = sc.nextInt();
@@ -196,6 +218,117 @@ public class MainBack {
             sc.nextLine();
             EMssg();
         }
-        findBy.GetFromArtists(pick-1);
+        String chosen = findBy.GetFromArtists(pick-1);
+        int count = 0;
+        System.out.println();
+        for(int i=0;i<songLib.size();i++){
+            String[] extractSong = songLib.get(i).split("_",5);
+            String[] getArtist = extractSong[1].split(":",2);
+            String artist = getArtist[1];
+            if(artist.equals(chosen)){
+                count++;
+                ToCurrent(extractSong, count, i);
+            }
+        }
+
+        System.out.print("Input song number of chosen song: ");
+        int num = 0;
+        while(true){
+            if(sc.hasNextInt()){
+                num = sc.nextInt();
+                if(num>0&&num<=currentSongs.size()){
+                    break;
+                }
+            }
+            sc.nextLine();
+            EMssg();
+        }
+        PlayCurrent(num);
+    }
+
+    static void PlayByCategory(){//group songs by category
+        int pick=0;
+
+        findBy.DisplayCategs();
+        System.out.print("\nInput num of chosen category: ");
+        while(true){
+            if(sc.hasNextInt()){
+                pick = sc.nextInt();
+                if(pick>0&&pick<=findBy.GetCategsCount()){
+                    break;
+                }
+            }
+            sc.nextLine();
+            EMssg();
+        }
+        String chosen = findBy.GetFromCategs(pick-1);
+        int count = 0;
+        System.out.println();
+        for(int i=0;i<songLib.size();i++){
+            String[] extractSong = songLib.get(i).split("_",5);
+            String[] getCateg = extractSong[4].split(":",2);
+            String categ = getCateg[1];
+            if(categ.equals(chosen)){
+                count++;
+                ToCurrent(extractSong, count, i);
+            }
+        }
+
+        System.out.print("Input song number of chosen song: ");
+        int num = 0;
+        while(true){
+            if(sc.hasNextInt()){
+                num = sc.nextInt();
+                if(num>0&&num<=currentSongs.size()){
+                    break;
+                }
+            }
+            sc.nextLine();
+            EMssg();
+        }
+        PlayCurrent(num);
+    }
+
+    static void PlayByAlbum(){//group songs by album
+        int pick=0;
+
+        findBy.DisplayAlbums();
+        System.out.print("\nInput num of chosen album: ");
+        while(true){
+            if(sc.hasNextInt()){
+                pick = sc.nextInt();
+                if(pick>0&&pick<=findBy.GetAlbumsCount()){
+                    break;
+                }
+            }
+            sc.nextLine();
+            EMssg();
+        }
+        String chosen = findBy.GetFromAlbums(pick-1);
+        int count = 0;
+        System.out.println();
+        for(int i=0;i<songLib.size();i++){
+            String[] extractSong = songLib.get(i).split("_",5);
+            String[] getAlbum = extractSong[2].split(":",2);
+            String album = getAlbum[1];
+            if(album.equals(chosen)){
+                count++;
+                ToCurrent(extractSong, count, i);
+            }
+        }
+
+        System.out.print("Input song number of chosen song: ");
+        int num = 0;
+        while(true){
+            if(sc.hasNextInt()){
+                num = sc.nextInt();
+                if(num>0&&num<=currentSongs.size()){
+                    break;
+                }
+            }
+            sc.nextLine();
+            EMssg();
+        }
+        PlayCurrent(num);
     }
 }
