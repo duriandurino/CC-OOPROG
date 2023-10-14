@@ -139,6 +139,7 @@ public class MusicMain{
     static void StoreGroups(ArrayList<String> songLib){
         int i=0;
         while(i<songLib.size()){
+            boolean dupe = false;
             System.out.println(songLib.get(i));
             String getData = songLib.get(i);
             String[] splitData = getData.split("_",5);
@@ -146,11 +147,15 @@ public class MusicMain{
             System.out.println(getArtist[1]);
             if(findBy.GetArtistsCount()==0){
                 findBy.AddArtist(getArtist[1]);
-            }
-            for(int j=0;j<findBy.GetArtistsCount();j++){
-                if((!getArtist[1].equals(findBy.GetFromArtists(j))) && j==(findBy.GetArtistsCount()-1)){
-                    findBy.AddArtist(getArtist[1]);
+            }else{
+                for(int j=0;j<findBy.GetArtistsCount();j++){
+                    if(getArtist[1].equals(findBy.GetFromArtists(j))){
+                        dupe = true;
+                    }
                 }
+            }
+            if(dupe == false){
+                findBy.AddArtist(getArtist[1]);
             }
             i++;
         }
