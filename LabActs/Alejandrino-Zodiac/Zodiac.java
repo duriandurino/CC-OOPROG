@@ -40,7 +40,6 @@ class Zodiac{
       boolean pass = false;
       boolean dayP = false;
       boolean monthP = false;
-      boolean leap = false;
       boolean checkTO = false;
       int monthTO[] = {1,3,5,7,8,10,12};
       
