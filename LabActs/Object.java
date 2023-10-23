@@ -11,8 +11,13 @@ public class Object{
     }
 
     public void display(){
-        System.out.println("Name: "+name);
-        System.out.println("Section: "+section);
-        System.out.println("Year"+year);
+        System.out.println(name);
+        System.out.println(section);
+        System.out.println(year);
+    }
+
+    public static void main(String[]args){
+        Object obj = new Object("DADA", "F", 2);
+        obj.display();
     }
 }
