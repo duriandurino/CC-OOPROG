@@ -15,9 +15,4 @@ public class Object{
         System.out.println(section);
         System.out.println(year);
     }
-
-    public static void main(String[]args){
-        Object obj = new Object("DADA", "F", 2);
-        obj.display();
-    }
 }
