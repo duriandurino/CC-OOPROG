@@ -277,7 +277,7 @@ public class Players extends Rectangle {
     void dead(){
         matay.playSfx();
         kb=false;
-        x=randFall.nextInt(300)+300;
+        x=randFall.nextInt(600)+300;
         y=-1000;
         napaso=false;
     }

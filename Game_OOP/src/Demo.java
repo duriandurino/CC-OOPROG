@@ -20,6 +20,8 @@ public class Demo extends GameStates{
     int lvl;
 
     Audio batol, batol2;
+    Audio selc, seld;
+
 
     Random level = new Random();
 
@@ -42,6 +44,8 @@ public class Demo extends GameStates{
         lava = new Lava(0,650);
         batol = new Audio("src\\assets\\battle1.wav");
         batol2 = new Audio("src\\assets\\battle2.wav");
+        selc = new Audio("src\\assets\\sel.wav");
+        seld = new Audio("src\\assets\\seld.wav");
         batol2.setVol(0.5f);
         batol.setVol(0.5f);
     }
@@ -60,27 +64,9 @@ public class Demo extends GameStates{
         p2.tick(map.getPlats(), lava, p1);//ticks obj ticks
         lava.tick();
 
-        if((p1.dash)&&dashColl(p1,p2)){//for p1 hit p2
-            p2.kb=true;
-            p2.naigo.playSfx();
-        }
-        if(p1.pR==1&&p2.kb){
-            p2.hit(true);
-        }
-        if(p1.pL==1&&p2.kb){
-            p2.hit(false);
-        }
+        payting(p1,p2);
                     //the fuckin game mechanic
-        if((p2.dash)&&dashColl(p2,p1)){//for p2 hit p1
-            p1.kb=true;
-            p1.naigo.playSfx();
-        }
-        if(p2.pR==1&&p1.kb){
-            p1.hit(true);
-        }
-        if(p2.pL==1&&p1.kb){
-            p1.hit(false);
-        }
+        payting(p2,p1);
 
         if(!paused){
             //ooo lava scary
@@ -138,12 +124,14 @@ public class Demo extends GameStates{
         }
         if(paused){
             if(k==KeyEvent.VK_UP||k==KeyEvent.VK_W){
+                selc.playSfx();
                 sel--;
                 if(sel<0){
                     sel=pauseOpt.length-1;
                 }
             }
             if(k==KeyEvent.VK_DOWN||k==KeyEvent.VK_D){
+                selc.playSfx();
                 sel++;
                 if(sel>=pauseOpt.length){
                     sel=0;
@@ -151,6 +139,7 @@ public class Demo extends GameStates{
             }
 
             if(k==KeyEvent.VK_ENTER){
+                seld.playSfx();
                 switch(sel){
                     case 0:
                         resumed();
@@ -185,7 +174,32 @@ public class Demo extends GameStates{
 
     @Override
     void mouseClicked(int x, int y) {
-
+        if(paused){
+            if(x>=490&&x<=650&&y>=250&&y<=290){
+                selc.playSfx();
+                if(sel==0){
+                    resumed();
+                }
+                sel=0;
+            }
+            if(x>=490&&x<=650&&y>=330&&y<=370){
+                selc.playSfx();
+                if(sel==1){
+                    //resumed();
+                    endGame();
+                    gsm.states.push(new Demo(gsm));
+                }
+                sel=1;
+            }
+            if(x>=490&&x<=690&&y>=410&&y<=450){
+                selc.playSfx();
+                if(sel==2){
+                    gsm.states.pop();
+                    gsm.states.push(new Menu(gsm));
+                }
+                sel=2;
+            }
+        }
     }
 
 
@@ -200,6 +214,19 @@ public class Demo extends GameStates{
             p=1;
         }
         return p;
+    }
+
+    void payting(Players a, Players b){
+        if((a.dash)&&dashColl(a,b)){//for p2 hit p1
+            b.kb=true;
+            b.naigo.playSfx();
+        }
+        if(a.pR==1&&b.kb){
+            b.hit(true);
+        }
+        if(a.pL==1&&b.kb){
+            b.hit(false);
+        }
     }
 
     boolean dashColl(Players a, Players b){//p coll when dash proud kaayo ko ani dapat ma 1.0 ako grado
@@ -253,11 +280,15 @@ public class Demo extends GameStates{
         for(int i=0; i<pauseOpt.length;i++){
             if(sel==i){
                 g2.setStroke(new BasicStroke(4));
-                g2.drawRect(495,250+i*80,200,40);
+                g2.setColor(Color.DARK_GRAY);
                 if(sel==0){
+                    seldH(g,g2,i,140);
                     g.setColor(Color.GREEN);
-                }if(sel==1){
+                }else if(sel==1){
+                    seldH(g,g2,i,110);
                     g.setColor(Color.RED);
+                }else if(sel==2){
+                    seldH(g,g2,i,200);
                 }
             }else{
                 g.setColor(Color.BLACK);
@@ -265,5 +296,13 @@ public class Demo extends GameStates{
             g.setFont(new Font("Palatino Linotype", Font.BOLD, 30));
             g.drawString(pauseOpt[i], 500, 280+i*80);
         }
+    }
+
+    void seldH(Graphics g, Graphics2D g2, int i, int w){
+        g2.setComposite(AlphaComposite.SrcOver.derive(0.6f));
+        g2.fillRect(495,250+i*80,w,40);
+        g2.setComposite(AlphaComposite.SrcOver.derive(1f));
+        g.setColor(Color.BLACK);
+        g2.drawRect(495,250+i*80,w,40);
     }
 }
