@@ -1,13 +1,28 @@
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.Random;
 
 public class GameOver extends GameStates{
 
     Audio pwvc;
+
+    ImageIcon rbg = new ImageIcon("src\\assets\\record.png");
+    Image rbgi = rbg.getImage();
+    ImageIcon md;
+
+    DataManager dm;
+
     int playerId;
     int pvc;
-    String fp;
     int delay=0;
+
+    String fp;
+    StringBuilder userIn;
+    String disUin;
+    char userInChar;
+
+    boolean empty=false;
 
     GameOver(GSM gsm, int wp){
         super(gsm);
@@ -21,6 +36,7 @@ public class GameOver extends GameStates{
         fp = "src\\assets\\pw"+pvc+".wav";
         pwvc = new Audio(fp);
         pwvc.setVol(1.9f);
+        userIn = new StringBuilder();
     }
 
     @Override
@@ -44,18 +60,46 @@ public class GameOver extends GameStates{
 
     @Override
     void draw(Graphics g) {
-        g.setColor(Color.ORANGE);
-        g.fillRect(0,0,MainPanel.sw, MainPanel.sh);
         g.setColor(Color.BLACK);
-        g.setFont(new Font("Palatino Linotype", Font.BOLD, 70));
-        g.drawString("Winner: Player "+playerId, MainPanel.sw/2-170,100);
-        g.drawLine(0,MainPanel.sh/2,MainPanel.sw,MainPanel.sh/2);
-        g.drawLine(MainPanel.sw/2, 0,MainPanel.sw/2,MainPanel.sh);
+        g.fillRect(0,0,MainPanel.sw, MainPanel.sh);
+        g.drawImage(rbgi, 0,0,MainPanel.sw, MainPanel.sh,null);
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Palatino Linotype", Font.BOLD, 50));
+        g.drawString("Winner: Player "+playerId, 415,150);
+        g.setColor(Color.BLACK);
+        //g.drawLine(0,MainPanel.sh/2,MainPanel.sw,MainPanel.sh/2);
+        //g.drawLine(MainPanel.sw/2, 0,MainPanel.sw/2,MainPanel.sh);
+        g.setFont(new Font("Segoe Script", Font.BOLD, 50));
+        disUin = userIn.toString();
+        g.drawString(disUin, 500,480);
+        if(empty){
+            g.setColor(Color.RED);
+            g.setFont(new Font("Palatino Linotype", Font.BOLD, 20));
+            g.drawString("Should not be empty!", 505,520);
+        }
+        md = new ImageIcon("src\\assets\\p"+playerId+".gif");
+        Image mdi = md.getImage();
+        g.drawImage(mdi, 690,300,700, 550, null);
     }
 
     @Override
     void keyPressed(int k) {
-
+        if(k== KeyEvent.VK_BACK_SPACE){
+            if(!userIn.isEmpty()){
+                userIn.deleteCharAt(userIn.length()-1);
+            }
+        }
+        if(k==KeyEvent.VK_ENTER){
+            if(!userIn.isEmpty()){
+                exit();
+                dm = new DataManager();
+                dm.writeData(disUin);
+            }
+            else{
+                userInChar='_';
+                empty=true;
+            }
+        }
     }
 
     @Override
@@ -64,12 +108,25 @@ public class GameOver extends GameStates{
     }
 
     @Override
-    void keyTyped(int k) {
-
+    void keyTyped(char k) {
+        if(userIn.length()<6&&k!='\b'){
+            if(k == ' ' || k == ':'||k=='\n'||k=='\t'){
+                userInChar='_';
+            }
+            else{
+                userInChar=k;
+            }
+            userIn.append(userInChar);
+        }
     }
 
     @Override
     void mouseClicked(int x, int y) {
 
+    }
+
+    void exit(){
+        pwvc.closeSfx();
+        gsm.states.push(new Menu(gsm));
     }
 }

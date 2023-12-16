@@ -55,7 +55,7 @@ public class Players extends Rectangle {
         this.height=48;
         this.color = color;
         this.id=id;
-        this.layp=5;
+        this.layp=1;
 
         jomp=new Audio("src\\assets\\jump.wav");//sfx init
         matay=new Audio("src\\assets\\died.wav");
@@ -63,7 +63,7 @@ public class Players extends Rectangle {
         naigo=new Audio("src\\assets\\hit.wav");
     }
 
-    void tick(Plats pl[][], Lava lava, Players p){
+    void tick(Plats[][] pl, Lava lava, Players p){
 
         boolean prevFall = fall;
         boolean prevJump = jump;
@@ -162,9 +162,9 @@ public class Players extends Rectangle {
         Image pfpi = pfp.getImage();
         g.drawImage(pfpi, 165+id*880, 80, 100,55, null);
         g.setColor(color);
-        String laypp = "P "+(id+1)+" HP: x"+layp;
-        g.setFont(new Font("Palatino Linotype", Font.BOLD, 25));//for Player life count
-        g.drawString(laypp,70+id*880,100);
+        String laypp = "x"+layp;
+        g.setFont(new Font("Palatino Linotype", Font.BOLD, 55));//for Player life count
+        g.drawString(laypp,80+id*880,120);
     }
 
     void keyPressed(int k){
@@ -211,7 +211,7 @@ public class Players extends Rectangle {
         //System.out.println(l+" : "+r);
     }
 
-    void keyTyped(int k){
+    void keyTyped(char k){
 
     }//yosless pesashit pero basin ma yospul idk
 
@@ -230,7 +230,7 @@ public class Players extends Rectangle {
 
     //BUKOT2 STARTS HERE
 
-    void mobmints(Plats pl[][], Lava lava, Players p){
+    void mobmints(Plats[][] pl, Lava lava, Players p){
 
         int iX = (int)x;
         int iY = (int)y;

@@ -10,8 +10,8 @@ public class MainPanel extends JPanel implements Runnable, KeyListener{
     private Thread thread;
     private boolean isRunning = false;
 
-    private int fps = 60;
-    private long tt = 1000/fps;
+    private final int fps = 60;
+    private final long tt = 1000/fps;
 
     private GSM gsm;
     MouseAdapter ma = new MouseAdapter() {
@@ -48,7 +48,7 @@ public class MainPanel extends JPanel implements Runnable, KeyListener{
     @Override
     public void keyTyped(KeyEvent e) {
         //System.out.println(e.getKeyCode());
-        gsm.keyTyped(e.getKeyCode());
+        gsm.keyTyped(e.getKeyChar());
     }
 
     @Override

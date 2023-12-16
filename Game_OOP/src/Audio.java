@@ -1,6 +1,5 @@
 import javax.sound.sampled.*;
 import java.io.File;
-import java.io.IOException;
 
 public class Audio {
 
@@ -27,6 +26,10 @@ public class Audio {
     }
     void stopSfx(){
         clip.stop();
+    }
+
+    void closeSfx(){
+        clip.close();
     }
 
     void setVol(float v){

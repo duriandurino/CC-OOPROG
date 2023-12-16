@@ -27,7 +27,7 @@ public class Lava extends Rectangle{
                 laba.playSfx();
             }
             y-=currLspeed;
-            //System.out.println("Fall: "+y+" "+currLspeed);//same logic with fall but upwards
+            //same logic with fall but upwards
             if(currLspeed<maxLspeed){
                 currLspeed+=0.0001;
             }

@@ -14,6 +14,6 @@ abstract class GameStates {
     abstract void draw(Graphics g);
     abstract void keyPressed(int k);
     abstract void keyReleased(int k);
-    abstract void keyTyped(int k);
+    abstract void keyTyped(char k);
     abstract void mouseClicked(int x, int y);
 }

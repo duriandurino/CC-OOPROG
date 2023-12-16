@@ -22,7 +22,7 @@ class GSM {
         states.peek().keyPressed(k);
     }
 
-    void keyTyped(int k){
+    void keyTyped(char k){
         states.peek().keyTyped(k);
     }
 

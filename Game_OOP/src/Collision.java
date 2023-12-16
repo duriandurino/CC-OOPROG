@@ -4,10 +4,8 @@ public class Collision {
     //platform coll
     static boolean coll(Point p, Plats b){
         if(b!=null){
-            //System.out.println("pero musud ani?");
             return b.contains(p);
         }
-        //System.out.println("nya mubuhat ani?");
         return false;
     }
 

@@ -9,7 +9,7 @@ public class Demo extends GameStates{
     }
 
     ImageIcon bg = new ImageIcon("src\\assets\\bgg.png");
-    ImageIcon pus = new ImageIcon("src\\assets\\pause.png");
+    ImageIcon pus = new ImageIcon("src\\assets\\panel.png");
     Image pusI = pus.getImage();
     Image bgImg = bg.getImage();
 
@@ -38,9 +38,9 @@ public class Demo extends GameStates{
 
     @Override
     void init() {
-        p1 = new Players(Color.BLUE,0);
-        p2=new Players(Color.RED,1);
-        map = new Arena("",36,21);
+        p1 = new Players(Color.YELLOW,0);
+        p2=new Players(Color.CYAN,1);
+        map = new Arena(36,21);
         lava = new Lava(0,650);
         batol = new Audio("src\\assets\\battle1.wav");
         batol2 = new Audio("src\\assets\\battle2.wav");
@@ -99,8 +99,6 @@ public class Demo extends GameStates{
         p1.draw(g);
         p2.draw(g);
         lava.draw(g);
-        //g.drawLine(0,MainPanel.sh/2,MainPanel.sw,MainPanel.sh/2);
-        //g.drawLine(MainPanel.sw/2, 0,MainPanel.sw/2,MainPanel.sh);
         if(paused){
             pauseMenu(g);
         }
@@ -111,7 +109,7 @@ public class Demo extends GameStates{
         p1.keyPressed(k);
         p2.keyPressed(k);
         if(k== KeyEvent.VK_P){
-            System.out.println("PAUSED");
+            //System.out.println("PAUSED");
             tap+=1;
             resumed=false;
             paused=true;
@@ -130,7 +128,7 @@ public class Demo extends GameStates{
                     sel=pauseOpt.length-1;
                 }
             }
-            if(k==KeyEvent.VK_DOWN||k==KeyEvent.VK_D){
+            if(k==KeyEvent.VK_DOWN||k==KeyEvent.VK_S){
                 selc.playSfx();
                 sel++;
                 if(sel>=pauseOpt.length){
@@ -145,12 +143,11 @@ public class Demo extends GameStates{
                         resumed();
                         break;
                     case 1:
-                        resumed();
                         endGame();
                         gsm.states.push(new Demo(gsm));
                         break;
                     case 2:
-                        gsm.states.pop();
+                        endGame();
                         gsm.states.push(new Menu(gsm));
                         break;
                     default:
@@ -167,7 +164,7 @@ public class Demo extends GameStates{
     }
 
     @Override
-    void keyTyped(int k) {
+    void keyTyped(char k) {
         p1.keyTyped(k);
         p2.keyTyped(k);
     }
@@ -178,6 +175,7 @@ public class Demo extends GameStates{
             if(x>=490&&x<=650&&y>=250&&y<=290){
                 selc.playSfx();
                 if(sel==0){
+                    seld.playSfx();
                     resumed();
                 }
                 sel=0;
@@ -185,23 +183,27 @@ public class Demo extends GameStates{
             if(x>=490&&x<=650&&y>=330&&y<=370){
                 selc.playSfx();
                 if(sel==1){
-                    //resumed();
+                    seld.playSfx();
                     endGame();
                     gsm.states.push(new Demo(gsm));
                 }
                 sel=1;
             }
-            if(x>=490&&x<=690&&y>=410&&y<=450){
+            if(x>=490&&x<=690&&y>=410&&y<=450) {
                 selc.playSfx();
                 if(sel==2){
-                    gsm.states.pop();
+                    seld.playSfx();
+                    endGame();
                     gsm.states.push(new Menu(gsm));
                 }
                 sel=2;
             }
+            if(x>=795&&x<=840&&y>=110&&y<=140){
+                seld.playSfx();
+                resumed();
+            }
         }
     }
-
 
     //BUKOT2 STARTS HERE
     int playerWin(Players p1, Players p2){//get p win
@@ -245,17 +247,32 @@ public class Demo extends GameStates{
     }
 
     void endGame(){
-        gsm.states.pop();
         harder=false;
         lava.arise=false;
         lava.laba.stopSfx();
         lava.cracks.stopSfx();
+        paused=false;
         batol.stopSfx();
         batol2.stopSfx();
+        batol.closeSfx();
+        batol2.closeSfx();
+        lava.laba.closeSfx();
+        lava.cracks.closeSfx();
+        selc.closeSfx();
+        seld.closeSfx();
+        killPSfx(p1);
+        killPSfx(p2);
+    }
+
+    void killPSfx(Players a){
+        a.jomp.closeSfx();
+        a.matay.closeSfx();
+        a.dasher.closeSfx();
+        a.naigo.closeSfx();
     }
 
     void resumed(){
-        System.out.println("Resumed");
+        //System.out.println("Resumed");
         resumed=true;
         paused=false;
         if(lvl==2){
@@ -276,7 +293,7 @@ public class Demo extends GameStates{
         g2.setComposite(AlphaComposite.SrcOver.derive(0.7f));
         g2.fillRect(0,0,MainPanel.sw,MainPanel.sh);
         g2.setComposite(AlphaComposite.SrcOver.derive(1f));
-        g.drawImage(pusI, 350,100, 500,500, null);
+        g.drawImage(pusI, 400,100, 450,500, null);
         for(int i=0; i<pauseOpt.length;i++){
             if(sel==i){
                 g2.setStroke(new BasicStroke(4));
@@ -289,9 +306,10 @@ public class Demo extends GameStates{
                     g.setColor(Color.RED);
                 }else if(sel==2){
                     seldH(g,g2,i,200);
+                    g.setColor(Color.ORANGE);
                 }
             }else{
-                g.setColor(Color.BLACK);
+                g.setColor(Color.WHITE);
             }
             g.setFont(new Font("Palatino Linotype", Font.BOLD, 30));
             g.drawString(pauseOpt[i], 500, 280+i*80);
