@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class GameOver extends GameStates{
 
-    Audio pwvc;
+    Audio pwvc, vsong;
 
     ImageIcon rbg = new ImageIcon("src\\assets\\record.png");
     Image rbgi = rbg.getImage();
@@ -36,6 +36,7 @@ public class GameOver extends GameStates{
         fp = "src\\assets\\pw"+pvc+".wav";
         pwvc = new Audio(fp);
         pwvc.setVol(1.9f);
+        vsong=new Audio("src\\assets\\victory.wav");
         userIn = new StringBuilder();
     }
 
@@ -48,11 +49,11 @@ public class GameOver extends GameStates{
             pwvc.playSfx();
             delay+=1;
         }
-        if(delay<480){
+        if(delay<400){
             delay+=1;
         }
-        if(delay==480){
-
+        if(delay==400){
+            vsong.playSfx();
             delay+=1;
         }
         //System.out.println("way delay bleh");
@@ -127,6 +128,7 @@ public class GameOver extends GameStates{
 
     void exit(){
         pwvc.closeSfx();
+        vsong.closeSfx();
         gsm.states.push(new Menu(gsm));
     }
 }

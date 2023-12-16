@@ -55,7 +55,7 @@ public class Players extends Rectangle {
         this.height=48;
         this.color = color;
         this.id=id;
-        this.layp=1;
+        this.layp=5;
 
         jomp=new Audio("src\\assets\\jump.wav");//sfx init
         matay=new Audio("src\\assets\\died.wav");
