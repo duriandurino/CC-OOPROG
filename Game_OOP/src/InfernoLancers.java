@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.BorderLayout;
 
-public class BimBamBomrino{
+public class InfernoLancers{
     public static void main(String[] args){
         JFrame gf = new JFrame();
         ImageIcon logo = new ImageIcon("src\\assets\\logo.png");
