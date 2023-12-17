@@ -76,7 +76,7 @@ public class GameOver extends GameStates{
         if(empty){
             g.setColor(Color.RED);
             g.setFont(new Font("Palatino Linotype", Font.BOLD, 20));
-            g.drawString("Should not be empty!", 505,520);
+            g.drawString("Should not be empty!", 485,520);
         }
         md = new ImageIcon("src\\assets\\p"+playerId+".gif");
         Image mdi = md.getImage();
@@ -110,7 +110,7 @@ public class GameOver extends GameStates{
 
     @Override
     void keyTyped(char k) {
-        if(userIn.length()<6&&k!='\b'){
+        if(userIn.length()<8&&k!='\b'){
             if(k == ' ' || k == ':'||k=='\n'||k=='\t'){
                 userInChar='_';
             }

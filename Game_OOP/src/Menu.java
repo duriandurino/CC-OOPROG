@@ -147,7 +147,7 @@ public class Menu extends GameStates {
         dm = new DataManager();
         String[] records = dm.getDatas();
         g.setFont(new Font("Palatino Linotype", Font.BOLD, 25));
-        g.drawString("NAME                    WINS", 400, 215);
+        g.drawString("NAME                      WINS", 400, 215);
         for(int i=0;i< records.length;i++){
             if(records[i]==null){
                 break;
@@ -171,7 +171,7 @@ public class Menu extends GameStates {
             }
             String[] rSplit = records[i].split(":");
             String spc = " - - - - - - - - - - ";
-            for(int j=records[i].length(); j<6;j++){
+            for(int j=records[i].length(); j<8;j++){
                 spc+="- ";
             }
             String pr = (i+1)+". "+rSplit[0]+" "+spc+" "+rSplit[1];

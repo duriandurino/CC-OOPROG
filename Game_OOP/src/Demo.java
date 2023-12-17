@@ -276,6 +276,7 @@ public class Demo extends GameStates{
         resumed=true;
         paused=false;
         if(lvl==2){
+            batol.closeSfx();
             batol2.clip.start();
         }
         if(lvl!=2){
