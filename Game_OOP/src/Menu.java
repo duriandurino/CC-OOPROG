@@ -149,6 +149,9 @@ public class Menu extends GameStates {
         g.setFont(new Font("Palatino Linotype", Font.BOLD, 25));
         g.drawString("NAME                    WINS", 400, 215);
         for(int i=0;i< records.length;i++){
+            if(records[i]==null){
+                break;
+            }
             if(i==0){
                 g.setColor(new Color(255,215,0));
                 g.drawRect(400,240, 350,30);

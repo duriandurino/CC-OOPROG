@@ -13,7 +13,7 @@ public class MainPanel extends JPanel implements Runnable, KeyListener{
     private final int fps = 60;
     private final long tt = 1000/fps;
 
-    private GSM gsm;
+    private GSM gsm = new GSM();
     MouseAdapter ma = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Inferno Lancers - The Duel:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Inferno_Lancers___The_Duel_jar</output-path>
+    <root id="archive" name="Inferno Lancers - The Duel.jar">
+      <element id="module-output" name="Inferno Lancers - The Duel" />
+    </root>
+  </artifact>
+</component>

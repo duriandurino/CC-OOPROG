@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="Game_OOP:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Game_OOP_jar</output-path>
-    <root id="archive" name="Game_OOP.jar">
-      <element id="module-output" name="Inferno Lancers: The Duel" />
-    </root>
-  </artifact>
-</component>
