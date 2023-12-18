@@ -6,7 +6,7 @@ public class DataManager {
 
     ArrayList<Data> data = new ArrayList<>();
 
-    String fp="src\\assets\\data.txt";
+    String fp="src/assets/data.txt";
 
     DataManager(){
         loadData();

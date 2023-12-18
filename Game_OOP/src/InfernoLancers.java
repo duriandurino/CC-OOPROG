@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 public class InfernoLancers{
     public static void main(String[] args){
         JFrame gf = new JFrame();
-        ImageIcon logo = new ImageIcon("src\\assets\\logo.png");
+        ImageIcon logo = new ImageIcon("src/assets/logo.png");
 
         gf.setDefaultCloseOperation(gf.EXIT_ON_CLOSE);
         gf.setResizable(false);

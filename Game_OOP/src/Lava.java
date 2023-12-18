@@ -4,7 +4,7 @@ import java.awt.*;
 public class Lava extends Rectangle{
     public static final int size = 1200;
 
-    ImageIcon plimg = new ImageIcon("src\\assets\\lava.gif");
+    ImageIcon plimg = new ImageIcon("src/assets/lava.gif");
     Image plimgg = plimg.getImage();
 
     Audio laba,cracks;
@@ -16,8 +16,8 @@ public class Lava extends Rectangle{
 
     Lava(int x, int y){
         setBounds(x, y, size, size/2-200);
-        laba=new Audio("src\\assets\\lava.wav");
-        cracks=new Audio("src\\assets\\cracks.wav");
+        laba=new Audio("src/assets/lava.wav");
+        cracks=new Audio("src/assets/cracks.wav");
     }
 
     void tick(){

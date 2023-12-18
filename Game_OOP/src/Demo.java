@@ -8,8 +8,8 @@ public class Demo extends GameStates{
         super(gsm);
     }
 
-    ImageIcon bg = new ImageIcon("src\\assets\\bgg.png");
-    ImageIcon pus = new ImageIcon("src\\assets\\panel.png");
+    ImageIcon bg = new ImageIcon("src/assets/bgg.png");
+    ImageIcon pus = new ImageIcon("src/assets/panel.png");
     Image pusI = pus.getImage();
     Image bgImg = bg.getImage();
 
@@ -42,10 +42,10 @@ public class Demo extends GameStates{
         p2=new Players(Color.CYAN,1);
         map = new Arena(36,21);
         lava = new Lava(0,650);
-        batol = new Audio("src\\assets\\battle1.wav");
-        batol2 = new Audio("src\\assets\\battle2.wav");
-        selc = new Audio("src\\assets\\sel.wav");
-        seld = new Audio("src\\assets\\seld.wav");
+        batol = new Audio("src/assets/battle1.wav");
+        batol2 = new Audio("src/assets/battle2.wav");
+        selc = new Audio("src/assets/sel.wav");
+        seld = new Audio("src/assets/seld.wav");
         batol2.setVol(0.5f);
         batol.setVol(0.5f);
     }

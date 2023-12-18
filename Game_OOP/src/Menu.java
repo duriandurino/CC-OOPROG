@@ -16,20 +16,20 @@ public class Menu extends GameStates {
 
     Audio menu,selc,seld;
 
-    ImageIcon mbg = new ImageIcon("src\\assets\\mbg.gif");
+    ImageIcon mbg = new ImageIcon("src/assets/mbg.gif");
     Image mbgi = mbg.getImage();
-    ImageIcon md = new ImageIcon("src\\assets\\p1.gif");
+    ImageIcon md = new ImageIcon("src/assets/p1.gif");
     Image mdi = md.getImage();
-    ImageIcon pnl = new ImageIcon("src\\assets\\panel.png");
+    ImageIcon pnl = new ImageIcon("src/assets/panel.png");
     Image pnli = pnl.getImage();
-    ImageIcon hii = new ImageIcon("src\\assets\\help.png");
+    ImageIcon hii = new ImageIcon("src/assets/help.png");
     Image hi = hii.getImage();
 
-    ImageIcon ttl = new ImageIcon("src\\assets\\title.png");
+    ImageIcon ttl = new ImageIcon("src/assets/title.png");
     Image ttli = ttl.getImage();
-    ImageIcon tbg = new ImageIcon("src\\assets\\titlebg.png");
+    ImageIcon tbg = new ImageIcon("src/assets/titlebg.png");
     Image tbgi = tbg.getImage();
-    ImageIcon ttlt = new ImageIcon("src\\assets\\tail.gif");
+    ImageIcon ttlt = new ImageIcon("src/assets/tail.gif");
     Image ttlti = ttlt.getImage();
 
     boolean stop=false;
@@ -46,9 +46,9 @@ public class Menu extends GameStates {
     void init() {
         //Leaderboard lb = new Leaderboard();
         //lb.checkData();
-        menu = new Audio("src\\assets\\menu.wav");
-        selc = new Audio("src\\assets\\sel.wav");
-        seld = new Audio("src\\assets\\seld.wav");
+        menu = new Audio("src/assets/menu.wav");
+        selc = new Audio("src/assets/sel.wav");
+        seld = new Audio("src/assets/seld.wav");
     }
 
     @Override

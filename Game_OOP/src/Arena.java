@@ -26,13 +26,13 @@ public class Arena {
             for(int j=0;j<pl[0].length;j++){
                 switch(pattern[i][j]){
                     case 1:
-                        pl[i][j] = new Plats((j*Plats.size)+164, (i*Plats.size)+90, "src\\assets\\plb.png");
+                        pl[i][j] = new Plats((j*Plats.size)+164, (i*Plats.size)+90, "src/assets/plb.png");
                         break;
                     case 2:
-                        pl[i][j] = new Plats((j*Plats.size)+164, (i*Plats.size)+90, "src\\assets\\plbr.png");
+                        pl[i][j] = new Plats((j*Plats.size)+164, (i*Plats.size)+90, "src/assets/plbr.png");
                         break;
                     case 3:
-                        pl[i][j] = new Plats((j*Plats.size)+164, (i*Plats.size)+90, "src\\assets\\plbl.png");
+                        pl[i][j] = new Plats((j*Plats.size)+164, (i*Plats.size)+90, "src/assets/plbl.png");
                         break;
                     default:
                         break;

@@ -16,7 +16,7 @@ public class Players extends Rectangle {
     int r,l, pR, pL;//right left detection
 
     ImageIcon pimg;
-    ImageIcon plf = new ImageIcon("src\\assets\\layp.png");
+    ImageIcon plf = new ImageIcon("src/assets/layp.png");
     Image plfi = plf.getImage();
     ImageIcon pfp;
 
@@ -57,10 +57,10 @@ public class Players extends Rectangle {
         this.id=id;
         this.layp=5;
 
-        jomp=new Audio("src\\assets\\jump.wav");//sfx init
-        matay=new Audio("src\\assets\\died.wav");
-        dasher=new Audio("src\\assets\\synth.wav");
-        naigo=new Audio("src\\assets\\hit.wav");
+        jomp=new Audio("src/assets/jump.wav");//sfx init
+        matay=new Audio("src/assets/died.wav");
+        dasher=new Audio("src/assets/synth.wav");
+        naigo=new Audio("src/assets/hit.wav");
     }
 
     void tick(Plats[][] pl, Lava lava, Players p){
@@ -97,52 +97,52 @@ public class Players extends Rectangle {
     }
 
     String file;
-    String prevFile = "src\\assets\\p"+(id+1)+"r.gif";
+    String prevFile = "src/assets/p"+(id+1)+"r.gif";
 
     void draw(Graphics g){
 
         if (alive){
             file=prevFile;
             if(l==0&&r==0){
-                file = "src\\assets\\p"+(id+1)+"r.gif";
+                file = "src/assets/p"+(id+1)+"r.gif";
                 r=1;
                 prevFile=file;
             }
             if(!dash){
                 if(right||r==1){
-                    file = "src\\assets\\p"+(id+1)+"r.gif";
+                    file = "src/assets/p"+(id+1)+"r.gif";
                     prevFile=file;
                 }
                 if(left||l==1){
-                    file = "src\\assets\\p"+(id+1)+".gif";
+                    file = "src/assets/p"+(id+1)+".gif";
                     prevFile=file;
                 }
             }
 
             if(dash){
                 if(r==1){
-                    file = "src\\assets\\p"+(id+1)+"ar.gif";
+                    file = "src/assets/p"+(id+1)+"ar.gif";
                     prevFile=file;
                 }
                 if(l==1){
-                    file = "src\\assets\\p"+(id+1)+"a.gif";
+                    file = "src/assets/p"+(id+1)+"a.gif";
                     prevFile=file;
                 }
             }
 
             if (kb) {
                 if(rkb){
-                    file = "src\\assets\\p"+(id+1)+"hr.gif";
+                    file = "src/assets/p"+(id+1)+"hr.gif";
                     prevFile=file;
                 }
                 if(lkb){
-                    file = "src\\assets\\p"+(id+1)+"h.gif";
+                    file = "src/assets/p"+(id+1)+"h.gif";
                     prevFile=file;
                 }
             }
 
             if(napaso){
-                file="src\\assets\\napaso.gif";
+                file="src/assets/napaso.gif";
                 prevFile=file;
             }
 
@@ -158,7 +158,7 @@ public class Players extends Rectangle {
         }
         g.setColor(Color.GRAY);
         g.drawImage(plfi,50+id*880,50,220,100,null);
-        pfp=new ImageIcon("src\\assets\\pfp"+(id+1)+".gif");
+        pfp=new ImageIcon("src/assets/pfp"+(id+1)+".gif");
         Image pfpi = pfp.getImage();
         g.drawImage(pfpi, 165+id*880, 80, 100,55, null);
         g.setColor(color);
