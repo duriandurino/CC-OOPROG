@@ -18,7 +18,7 @@ public class MainPanel extends JPanel implements Runnable, KeyListener{
         @Override
         public void mouseClicked(MouseEvent e) {
             super.mouseClicked(e);
-            System.out.println(e.getButton()+" "+e.getX() + " : " + e.getY());
+            //System.out.println(e.getButton()+" "+e.getX() + " : " + e.getY());
             gsm.mouseClicked(e.getX(), e.getY());
         }
     };

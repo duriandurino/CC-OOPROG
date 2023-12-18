@@ -1,3 +1,5 @@
 durino:69
 hello:2
 durinooo:2
+bigmac:1
+Haerin:1
