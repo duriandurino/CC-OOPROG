@@ -16,20 +16,20 @@ public class Menu extends GameStates {
 
     Audio menu,selc,seld;
 
-    ImageIcon mbg = new ImageIcon("src/assets/mbg.gif");
+    ImageIcon mbg = new ImageIcon("assets/mbg.gif");
     Image mbgi = mbg.getImage();
-    ImageIcon md = new ImageIcon("src/assets/p1.gif");
+    ImageIcon md = new ImageIcon("assets/p1.gif");
     Image mdi = md.getImage();
-    ImageIcon pnl = new ImageIcon("src/assets/panel.png");
+    ImageIcon pnl = new ImageIcon("assets/panel.png");
     Image pnli = pnl.getImage();
-    ImageIcon hii = new ImageIcon("src/assets/help.png");
+    ImageIcon hii = new ImageIcon("assets/help.png");
     Image hi = hii.getImage();
 
-    ImageIcon ttl = new ImageIcon("src/assets/title.png");
+    ImageIcon ttl = new ImageIcon("assets/title.png");
     Image ttli = ttl.getImage();
-    ImageIcon tbg = new ImageIcon("src/assets/titlebg.png");
+    ImageIcon tbg = new ImageIcon("assets/titlebg.png");
     Image tbgi = tbg.getImage();
-    ImageIcon ttlt = new ImageIcon("src/assets/tail.gif");
+    ImageIcon ttlt = new ImageIcon("assets/tail.gif");
     Image ttlti = ttlt.getImage();
 
     boolean stop=false;
@@ -46,9 +46,9 @@ public class Menu extends GameStates {
     void init() {
         //Leaderboard lb = new Leaderboard();
         //lb.checkData();
-        menu = new Audio("src/assets/menu.wav");
-        selc = new Audio("src/assets/sel.wav");
-        seld = new Audio("src/assets/seld.wav");
+        menu = new Audio("assets/menu.wav");
+        selc = new Audio("assets/sel.wav");
+        seld = new Audio("assets/seld.wav");
     }
 
     @Override
@@ -145,37 +145,39 @@ public class Menu extends GameStates {
 
     void lPanel(Graphics g){
         dm = new DataManager();
-        String[] records = dm.getDatas();
         g.setFont(new Font("Palatino Linotype", Font.BOLD, 25));
         g.drawString("NAME                      WINS", 400, 215);
-        for(int i=0;i< records.length;i++){
-            if(records[i]==null){
-                break;
+        if(dm.getDatas()!=null||dm.getDatas().length!=0){
+            String[] records = dm.getDatas();
+            for(int i=0;i< records.length;i++){
+                if(records[i]==null){
+                    break;
+                }
+                if(i==0){
+                    g.setColor(new Color(255,215,0));
+                    g.drawRect(400,240, 350,30);
+                    g.setFont(new Font("Times New Roman", Font.BOLD, 25));
+                }
+                else if(i==1){
+                    g.setColor(new Color(192,192,192));
+                    g.drawRect(400,280, 340,38);
+                    g.setFont(new Font("Times New Roman", Font.BOLD, 23));
+                }else if(i==2){
+                    g.setColor(new Color(205,127,50));
+                    g.drawRect(400,325, 330,35);
+                    g.setFont(new Font("Times New Roman", Font.BOLD, 20));
+                }else{
+                    g.setColor(Color.WHITE);
+                    g.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+                }
+                String[] rSplit = records[i].split(":");
+                String spc = " - - - - - - - - - - ";
+                for(int j=records[i].length(); j<8;j++){
+                    spc+="- ";
+                }
+                String pr = (i+1)+". "+rSplit[0]+" "+spc+" "+rSplit[1];
+                g.drawString(pr, 400, 265+i*40);
             }
-            if(i==0){
-                g.setColor(new Color(255,215,0));
-                g.drawRect(400,240, 350,30);
-                g.setFont(new Font("Times New Roman", Font.BOLD, 25));
-            }
-            else if(i==1){
-                g.setColor(new Color(192,192,192));
-                g.drawRect(400,280, 340,38);
-                g.setFont(new Font("Times New Roman", Font.BOLD, 23));
-            }else if(i==2){
-                g.setColor(new Color(205,127,50));
-                g.drawRect(400,325, 330,35);
-                g.setFont(new Font("Times New Roman", Font.BOLD, 20));
-            }else{
-                g.setColor(Color.WHITE);
-                g.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-            }
-            String[] rSplit = records[i].split(":");
-            String spc = " - - - - - - - - - - ";
-            for(int j=records[i].length(); j<8;j++){
-                spc+="- ";
-            }
-            String pr = (i+1)+". "+rSplit[0]+" "+spc+" "+rSplit[1];
-            g.drawString(pr, 400, 265+i*40);
         }
     }
 

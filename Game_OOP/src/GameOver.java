@@ -7,7 +7,7 @@ public class GameOver extends GameStates{
 
     Audio pwvc, vsong;
 
-    ImageIcon rbg = new ImageIcon("src/assets/record.png");
+    ImageIcon rbg = new ImageIcon("assets/record.png");
     Image rbgi = rbg.getImage();
     ImageIcon md;
 
@@ -33,10 +33,10 @@ public class GameOver extends GameStates{
     void init() {
         Random randomm = new Random();
         pvc = randomm.nextInt(4)+1;
-        fp = "src/assets/pw"+pvc+".wav";
+        fp = "assets/pw"+pvc+".wav";
         pwvc = new Audio(fp);
         pwvc.setVol(1.9f);
-        vsong=new Audio("src/assets/victory.wav");
+        vsong=new Audio("assets/victory.wav");
         userIn = new StringBuilder();
     }
 
@@ -78,7 +78,7 @@ public class GameOver extends GameStates{
             g.setFont(new Font("Palatino Linotype", Font.BOLD, 20));
             g.drawString("Should not be empty!", 485,520);
         }
-        md = new ImageIcon("src/assets/p"+playerId+".gif");
+        md = new ImageIcon("assets/p"+playerId+".gif");
         Image mdi = md.getImage();
         g.drawImage(mdi, 690,300,700, 550, null);
     }
